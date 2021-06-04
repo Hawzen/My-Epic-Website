@@ -1,5 +1,7 @@
 {
   "name": "ui",
+  "username": "Hawzen",
+  "repo-name": "Website_Frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +23,7 @@
     "react-plotly.js": "^2.5.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "react-useinterval": "^1.0.2",
     "unicode": "^13.0.0",
     "web-vitals": "^1.1.2"
@@ -31,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -51,5 +55,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://hawzen.me"
+  "homepage": "http://Hawzen.github.io/react-gh-pages"
 }
