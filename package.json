@@ -55,5 +55,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://Hawzen.github.io/"
+  "homepage": "http://Hawzen.github.io/",
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
 }
