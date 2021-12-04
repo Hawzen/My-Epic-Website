@@ -28,7 +28,7 @@
     "unicode": "^13.0.0",
     "web-vitals": "^1.1.2"
   },
-  "proxy": "https://hawzen.me:5000",
+  "proxy": "https://hawzen.me",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -55,7 +55,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://Hawzen.github.io/Website_Frontend",
+  "homepage": "http://www.hawzen.me",
   "devDependencies": {
     "gh-pages": "^3.2.3"
   }
