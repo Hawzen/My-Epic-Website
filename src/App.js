@@ -5,20 +5,14 @@ import {
   AppBar, 
   Tab, 
   makeStyles, 
-  Tabs, 
+  Tabs,
+  TabPanel,
   ThemeProvider, 
   Grid, 
   Container,
   Button,
 } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link as RouterLink,
-} from "react-router-dom";
-
 // // // // Assets
 import profileImg from "./assets/profile.jpg";
 
@@ -31,22 +25,12 @@ import assets_distribution2 from "./assets/distribution2.png";
 import assets_squareTwitgraph from "./assets/squareTwitgraph.png";
 // // // //
 
-const Dialect = lazy(() => import("./dialect/dialect"));
 
 const SymbolViewerContainer = lazy(() => import( "./symbolViewer/symbolViewerComponent"));
 const TriangleCanvasContainer = lazy(() => import("./sketches/trianglesCanvas"));
 // App
 export default function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-      <Route path="/dialect">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Dialect/>
-        </Suspense>
-      </Route>
-      <Route>
-
         <div className="App">
           <header className="App-body">
           
@@ -55,10 +39,6 @@ export default function App() {
             </ThemeProvider>
           </header>
         </div>
-        
-      </Route>
-    </Switch>
-  </BrowserRouter>
   );
 }
 
@@ -143,39 +123,38 @@ const useStyles = makeStyles((theme) => ({
 
 // Tabs and content container
 function TabsContentContainer(){
-  let [activeTab, activeTabSet] = useState(4);
+  let [activeTab, activeTabSet] = useState(0);
   // const ContentOutput = (props) => {
   //   return props.contents[props.activeTab];
   // }
   const changeContent = (event, newTab) => {
     activeTabSet(newTab);
   }
+
+  const whichTab = () => {
+    switch(activeTab){
+      case 0:
+        return <HomeContainer/>
+      case 1:
+        return <WhatboardContainer/>
+      case 2:
+        return <TwitgraphContainer/>
+      case 3:
+        return <TriangleCanvasContainer density={125} speed={0.03}/>
+      case 4:
+        return <SymbolViewerContainer/>
+      default:
+        return <HomeContainer/>
+    }
+    return <div/>
+  }
   
   return (
     <div>
       <ScrollableTabsButtonAuto activeTab={activeTab} changeContent={changeContent}/>
-      {/* <ContentOutput contents={contents} activeTab={activeTab}/> */}
-      <Switch>
-        <Route exact path="/">
-          <HomeContainer key="home"/>
-        </Route>
-        <Route path="/Whatboard">
-          <WhatboardContainer key="whatboard"/>
-        </Route>
-        <Route path="/TwitgraphSite">
-          <TwitgraphContainer key="Twitgraph"/>
-        </Route>
-        <Route path="/Sketches">
-          <Suspense fallback={<div>Loading...</div>}>
-            <TriangleCanvasContainer density={125} speed={0.03} key="Triangle"/>
-          </Suspense>
-        </Route>
-        <Route path="/SymbolViewer">
-          <Suspense fallback={<div>Loading...</div>}>
-            <SymbolViewerContainer/>
-          </Suspense>
-        </Route>
-      </Switch>
+      <Suspense fallback="Waiting">
+        {whichTab()}
+      </Suspense>
     </div>
   )
 }
@@ -195,21 +174,11 @@ function ScrollableTabsButtonAuto(props) {
           variant="scrollable"
           scrollButtons="auto"
         >
-          <RouterLink onChange={props.changeContent} to="/" style={{color: "black", textDecoration: "none"}}>
-            <Tab label="Home"/>
-          </RouterLink>
-          <RouterLink onChange={props.changeContent} to="/Whatboard" style={{color: "black", textDecoration: "none"}}>
-            <Tab label="Whatboard"/>
-          </RouterLink>
-          <RouterLink onChange={props.changeContent} to="/TwitgraphSite" style={{color: "black", textDecoration: "none"}}>
-            <Tab label="Twitgraph"/>
-          </RouterLink>
-          <RouterLink onChange={props.changeContent} to="/Sketches" style={{color: "black", textDecoration: "none"}}>
-            <Tab label="Sketches"/>
-          </RouterLink>
-          <RouterLink onChange={props.changeContent} to="/SymbolViewer" style={{color: "black", textDecoration: "none"}}>
-            <Tab label="Symbol Viewer"/>
-          </RouterLink>
+          <Tab label="Home"/>
+          <Tab label="Whatboard"/>
+          <Tab label="Twitgraph"/>
+          <Tab label="Sketches"/>
+          <Tab label="Symbol Viewer"/>
         </Tabs>
       </AppBar>
     </div>
