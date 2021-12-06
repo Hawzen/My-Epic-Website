@@ -25,6 +25,10 @@ import assets_distribution2 from "./assets/distribution2.png";
 import assets_squareTwitgraph from "./assets/squareTwitgraph.png";
 
 import assets_calbotFonts from "./assets/calbotFonts.png";
+
+import assets_candyBar from "./assets/candyBar.png";
+
+import asset_dialectPredictor from "./assets/dialectPredictor.png"
 // // // //
 
 
@@ -127,38 +131,28 @@ const useStyles = makeStyles((theme) => ({
 function TabsContentContainer(){
   const classes = useStyles();
   let [activeTab, activeTabSet] = useState(0);
-  // const ContentOutput = (props) => {
-  //   return props.contents[props.activeTab];
-  // }
-  const changeContent = (event, newTab) => {
-    activeTabSet(newTab);
+  const tabs = {
+    0: ["Home", <HomeContainer/>],
+    1: ["Whatboard", <WhatboardContainer/>],
+    2: ["Twitgraph", <TwitgraphContainer/>],
+    3: ["Calbot", <Calbot/>],
+    4: ["Dialect Predictor", <DialectPredictor/>],
+    5: ["Symbols", <SymbolViewerContainer/>],
+    6: ["Sketches", <TriangleCanvasContainer density={125} speed={0.03}/>],
+    7: ["Grades Animator", <CandyBar/>]
   }
 
-  const whichTab = () => {
-    switch(activeTab){
-      case 0:
-        return <HomeContainer/>
-      case 1:
-        return <WhatboardContainer/>
-      case 2:
-        return <TwitgraphContainer/>
-      case 3:
-        return <Calbot/>
-      case 4:
-        return <SymbolViewerContainer/>
-      case 5:
-        return <TriangleCanvasContainer density={125} speed={0.03}/>
-      default:
-        return <HomeContainer/>
-    }
-    return <div/>
+  const displayCurrentTab = () => {
+    if(activeTab in tabs)
+      return tabs[activeTab]
+    return <HomeContainer/>
   }
   
   return (
     <div>
-      <ScrollableTabsButtonAuto activeTab={activeTab} changeContent={changeContent}/>
+      <ScrollableTabsButtonAuto activeTab={activeTab} tabs={tabs} changeContent={(e, v) => activeTabSet(v)}/>
       <Suspense fallback="Waiting">
-        {whichTab()}
+        {displayCurrentTab()}
       </Suspense>
     </div>
   )
@@ -169,24 +163,21 @@ function ScrollableTabsButtonAuto(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar color="primary">
-        <Tabs
-          value={props.activeTab}
-          onChange={props.changeContent}
-          indicatorColor="primary"
-          // justify="center"
-          textColor="secondary"
-          variant="scrollable"
-          scrollButtons="auto"
-        >
-          <Tab label="Home"/>
-          <Tab label="Whatboard"/>
-          <Tab label="Twitgraph"/>
-          <Tab label="Calbot"/>
-          <Tab label="Symbol Viewer"/>
-          <Tab label="Sketches"/>
-        </Tabs>
-      </AppBar>
+    <Suspense fallback="">
+        <AppBar color="primary">
+          <Tabs
+            value={props.activeTab}
+            onChange={props.changeContent}
+            indicatorColor="primary"
+            // justify="center"
+            textColor="secondary"
+            variant="scrollable"
+            scrollButtons="auto"
+          >
+          {Object.entries(props.tabs).map( (v, i) => <Tab label={v[1][0]} key={i}/> )}
+          </Tabs>
+        </AppBar>
+      </Suspense>
     </div>
   );
 }
@@ -212,7 +203,7 @@ function HomeContainer(){
   const classes = useStyles();
   return (
     <Container>
-      <GeneralContainer 
+      <GeneralContainer
         left={<img src={profileImg} alt="profile" className={classes.containerProfileImage}/>}
         right={
               <Container>
@@ -231,6 +222,11 @@ function HomeContainer(){
 
 function ShowcaseContents(props){
   const classes = useStyles();
+
+  const button2 = props.button2 == undefined ?
+                <Button style={{marginLeft: "1em"}} variant="contained" color="secondary" href={props.link2Url} target="_blank">
+                  {props.link2Text}
+                </Button> : <div/>
   return (
     <Container style={{paddingTop: "3em", paddingBottom: "1em"}} className={classes.generalContainer}>
         <Grid container spacing={2} justify="space-between" alignItems="center">
@@ -239,7 +235,6 @@ function ShowcaseContents(props){
               className={props.imageClass}
               style={{borderRadius: "0.5em", boxShadow: "0 0 10px #000000"}}
               src={props.image}
-              alt="twitgraph"
             />
           </Grid>
           <Grid item xs={12} sm={12} md={4} xl={4}>
@@ -251,9 +246,7 @@ function ShowcaseContents(props){
               <Button variant="contained" color="primary" href={props.link1Url} target="_blank">
                 {props.link1Text}
               </Button> 
-              <Button style={{marginLeft: "1em"}} variant="contained" color="secondary" href={props.link2Url} target="_blank">
-                {props.link2Text}
-              </Button>
+              {button2}
 
             </Container>
           </Grid>
@@ -304,6 +297,32 @@ function Calbot(){
   });
 }
 
+function CandyBar(){
+  const classes = useStyles();
+  return ShowcaseContents({
+    title: "Grades Animator",
+    description: "Animates cumulative changes to a weighted average!",
+    image: assets_candyBar,
+    imageClass: classes.containerTwitgraphImage,
+    link1Url: "https://candy.hawzen.me/",
+    link1Text: "Visit",
+    link2Url: "https://github.com/Hawzen/Grades-Animator",
+    link2Text: "Code",
+  });
+}
+
+function DialectPredictor(){
+  const classes = useStyles();
+  return ShowcaseContents({
+    title: "Dialect Predictor",
+    description: "Predicts Arabic dialects using Machine Learning!",
+    image: asset_dialectPredictor,
+    imageClass: classes.containerTwitgraphImage,
+    link1Url: "https://dialect.hawzen.me/",
+    link1Text: "Visit",
+    button2: false,
+  });
+}
 
 // Sketch
 // Imported TriangleCanvasContainer component from triangleCanvas.js
