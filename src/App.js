@@ -23,6 +23,8 @@ import assets_logo_linkedInLogo from "./assets/logos/linkedinLogo.png";
 import assets_distribution2 from "./assets/distribution2.png";
 
 import assets_squareTwitgraph from "./assets/squareTwitgraph.png";
+
+import assets_calbotFonts from "./assets/calbotFonts.png";
 // // // //
 
 
@@ -123,6 +125,7 @@ const useStyles = makeStyles((theme) => ({
 
 // Tabs and content container
 function TabsContentContainer(){
+  const classes = useStyles();
   let [activeTab, activeTabSet] = useState(0);
   // const ContentOutput = (props) => {
   //   return props.contents[props.activeTab];
@@ -140,9 +143,11 @@ function TabsContentContainer(){
       case 2:
         return <TwitgraphContainer/>
       case 3:
-        return <TriangleCanvasContainer density={125} speed={0.03}/>
+        return <Calbot/>
       case 4:
         return <SymbolViewerContainer/>
+      case 5:
+        return <TriangleCanvasContainer density={125} speed={0.03}/>
       default:
         return <HomeContainer/>
     }
@@ -177,8 +182,9 @@ function ScrollableTabsButtonAuto(props) {
           <Tab label="Home"/>
           <Tab label="Whatboard"/>
           <Tab label="Twitgraph"/>
-          <Tab label="Sketches"/>
+          <Tab label="Calbot"/>
           <Tab label="Symbol Viewer"/>
+          <Tab label="Sketches"/>
         </Tabs>
       </AppBar>
     </div>
@@ -202,7 +208,6 @@ function GeneralContainer(props){
   );
 }
 
-// Home
 function HomeContainer(){
   const classes = useStyles();
   return (
@@ -224,28 +229,30 @@ function HomeContainer(){
   );
 }
 
-// Whatboard
-function WhatboardContainer(){
+function ShowcaseContents(props){
   const classes = useStyles();
   return (
-    <Container style={{paddingTop: "3em"}} className={classes.generalContainer}>
+    <Container style={{paddingTop: "3em", paddingBottom: "1em"}} className={classes.generalContainer}>
         <Grid container spacing={2} justify="space-between" alignItems="center">
-          <Grid item xs={12} sm={12} md={5} style={{paddingLeft: "1em"}}>
+        <Grid item xs={12} sm={12} md={6} xl={7} style={{paddingLeft: "0.0em", paddingRight: "1em"}}>
             <img
-              className={classes.containerWhatboardImage}
+              className={props.imageClass}
               style={{borderRadius: "0.5em", boxShadow: "0 0 10px #000000"}}
-              src={assets_distribution2}
-              alt="distirbution"
+              src={props.image}
+              alt="twitgraph"
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={5}>
+          <Grid item xs={12} sm={12} md={4} xl={4}>
             <Container style={{marginTop: "1em"}}>
-              <h1 style={{marginBottom: "0"}}>Whatboard,</h1> <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>An online whatsapp chat analysis tool</h2>
-              <Button variant="contained" color="primary" href="https://whatboard.hawzen.me" target="_blank">
-                Visit
+              <h1 style={{marginBottom: "0"}}>{props.title},</h1> 
+              <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>
+                {props.description}
+              </h2>
+              <Button variant="contained" color="primary" href={props.link1Url} target="_blank">
+                {props.link1Text}
               </Button> 
-              <Button style={{marginLeft: "1em"}} variant="contained" color="secondary" href="https://github.com/Hawzen/Whatboard" target="_blank">
-                Code
+              <Button style={{marginLeft: "1em"}} variant="contained" color="secondary" href={props.link2Url} target="_blank">
+                {props.link2Text}
               </Button>
 
             </Container>
@@ -255,35 +262,46 @@ function WhatboardContainer(){
   );
 }
 
-// Twitgraph
+function WhatboardContainer(){
+  const classes = useStyles();
+  return ShowcaseContents({
+    title: "Whatboard",
+    description: "An online whatsapp chat analysis tool",
+    image: assets_distribution2,
+    imageClass: classes.containerWhatboardImage,
+    link1Url: "https://whatboard.hawzen.me",
+    link1Text: "Visit",
+    link2Url: "https://github.com/Hawzen/Whatboard",
+    link2Text: "Code",
+  });
+}
+
 function TwitgraphContainer(){
   const classes = useStyles();
-  return (
-    <Container style={{paddingTop: "3em", paddingBottom: "1em"}} className={classes.generalContainer}>
-        <Grid container spacing={2} justify="space-between" alignItems="center">
-        <Grid item xs={12} sm={12} md={6} xl={7} style={{paddingLeft: "0.5em"}}>
-            <img
-              className={classes.containerTwitgraphImage}
-              style={{borderRadius: "0.5em", boxShadow: "0 0 10px #000000"}}
-              src={assets_squareTwitgraph}
-              alt="twitgraph"
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
-            <Container style={{marginTop: "1em"}}>
-              <h1 style={{marginBottom: "0"}}>Twitgraph,</h1> <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>Generates an interactive network of social clusters related to any twitter profile</h2>
-              <Button variant="contained" color="primary" href="https://hawzen.me/twitgraph" target="_blank">
-                Demo
-              </Button> 
-              <Button style={{marginLeft: "1em"}} variant="contained" color="secondary" href="https://github.com/Hawzen/Twitgraph" target="_blank">
-                Code
-              </Button>
+  return ShowcaseContents({
+    title: "Twitgraph",
+    description: "Generates an interactive network of social clusters related to any twitter profile",
+    image: assets_squareTwitgraph,
+    imageClass: classes.containerTwitgraphImage,
+    link1Url: "https://twitgraph.hawzen.me/",
+    link1Text: "Demo",
+    link2Url: "https://github.com/Hawzen/Twitgraph",
+    link2Text: "Code",
+  });
+}
 
-            </Container>
-          </Grid>
-        </Grid>
-    </Container>
-  );
+function Calbot(){
+  const classes = useStyles();
+  return ShowcaseContents({
+    title: "Calbot",
+    description: "Arabic font classifier",
+    image: assets_calbotFonts,
+    imageClass: classes.containerTwitgraphImage,
+    link1Url: "https://calbot.hawzen.me/",
+    link1Text: "Demo",
+    link2Url: "https://github.com/d7miiZ/Arabic-Font-Detector",
+    link2Text: "Code",
+  });
 }
 
 
