@@ -29,6 +29,8 @@ import assets_calbotFonts from "./assets/calbotFonts.png";
 import assets_candyBar from "./assets/candyBar.png";
 
 import asset_dialectPredictor from "./assets/dialectPredictor.png"
+
+import asset_phonetics_puzzle from "./assets/phonetics_puzzle.png"
 // // // //
 
 
@@ -139,7 +141,8 @@ function TabsContentContainer(){
     4: ["Dialect Predictor", <DialectPredictor/>],
     5: ["Symbols", <SymbolViewerContainer/>],
     6: ["Sketches", <TriangleCanvasContainer density={125} speed={0.03}/>],
-    7: ["Grades Animator", <CandyBar/>]
+    7: ["Grades Animator", <CandyBar/>],
+    8: ["Phonetics Puzzle", <PhoneticsPuzzle/>]
   }
 
   const displayCurrentTab = () => {
@@ -321,6 +324,20 @@ function DialectPredictor(){
     link1Url: "https://dialect.hawzen.me/",
     link1Text: "Visit",
     button2: false,
+  });
+}
+
+function PhoneticsPuzzle(){
+  const classes = useStyles();
+  return ShowcaseContents({
+    title: "Phonetics Puzzle",
+    description: "A puzzle about maximizing an anonymous function",
+    image: asset_phonetics_puzzle,
+    imageClass: classes.containerTwitgraphImage,
+    link1Url: "https://phonetics.hawzen.me/",
+    link1Text: "Visit",
+    link2Url: "https://github.com/Hawzen/Phonetics-Puzzle",
+    link2Text: "Code",
   });
 }
 
