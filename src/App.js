@@ -132,8 +132,6 @@ const useStyles = makeStyles((theme) => ({
 
 // Tabs and content container
 function TabsContentContainer(){
-  const classes = useStyles();
-  let [activeTab, activeTabSet] = useState(0);
   const tabs = {
     0: ["Home", <HomeContainer/>],
     1: ["Whatboard", <WhatboardContainer/>],
@@ -146,11 +144,16 @@ function TabsContentContainer(){
     8: ["Phonetics Puzzle", <PhoneticsPuzzle/>]
   }
 
+  let [activeTab, activeTabSet] = useState(
+    (Object.entries(tabs).map( (v, i) => window.location.hash.replace("%20", " ") === `#/${v[1][0]}`).indexOf(true))
+  );
+
   const displayCurrentTab = () => {
     if(activeTab in tabs)
       return tabs[activeTab]
     return <HomeContainer/>
   }
+
   return (
     <div>
       <ScrollableTabsButtonAuto activeTab={activeTab} tabs={tabs} changeContent={(e, v) => activeTabSet(v)}/>
