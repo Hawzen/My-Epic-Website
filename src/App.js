@@ -13,6 +13,8 @@ import {
   Button,
 } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
+import { Switch, Route, Link } from "react-router-dom";
+
 // // // // Assets
 import profileImg from "./assets/profile.jpg";
 
@@ -31,9 +33,8 @@ import assets_candyBar from "./assets/candyBar.png";
 import asset_dialectPredictor from "./assets/dialectPredictor.png"
 
 import asset_phonetics_puzzle from "./assets/phonetics_puzzle.png"
-// // // //
 
-
+// // // // Costume components
 const SymbolViewerContainer = lazy(() => import( "./symbolViewer/symbolViewerComponent"));
 const TriangleCanvasContainer = lazy(() => import("./sketches/trianglesCanvas"));
 // App
@@ -150,12 +151,23 @@ function TabsContentContainer(){
       return tabs[activeTab]
     return <HomeContainer/>
   }
-  
   return (
     <div>
       <ScrollableTabsButtonAuto activeTab={activeTab} tabs={tabs} changeContent={(e, v) => activeTabSet(v)}/>
       <Suspense fallback="Waiting">
-        {displayCurrentTab()}
+        {/* {displayCurrentTab()} */}
+        <Switch>
+          {/* <Route exact path="/" component={HomeContainer}/> */}
+          <Route path="/Whatboard" component={WhatboardContainer}/>
+          <Route path="/Twitgraph" component={TwitgraphContainer}/>
+          <Route path="/Calbot" component={Calbot}/>
+          <Route path="/Dialect Predictor" component={DialectPredictor}/>
+          <Route path="/Symbols" component={SymbolViewerContainer}/>
+          <Route path="/Sketches"> <TriangleCanvasContainer density={125} speed={0.03}/> </Route>
+          <Route path="/Grades Animator" component={CandyBar}/>
+          <Route path="/Phonetics Puzzle" component={PhoneticsPuzzle}/>
+          <Route component={HomeContainer}/> {/* Catch all */}
+        </Switch>
       </Suspense>
     </div>
   )
@@ -177,7 +189,7 @@ function ScrollableTabsButtonAuto(props) {
             variant="scrollable"
             scrollButtons="auto"
           >
-          {Object.entries(props.tabs).map( (v, i) => <Tab label={v[1][0]} key={i}/> )}
+          {Object.entries(props.tabs).map( (v, i) => <Tab label={v[1][0]} key={i} component={Link} className="MaterialUiTab" to={v[1][0]}/> )}
           </Tabs>
         </AppBar>
       </Suspense>
@@ -340,24 +352,6 @@ function PhoneticsPuzzle(){
     link2Text: "Code",
   });
 }
-
-// Sketch
-// Imported TriangleCanvasContainer component from triangleCanvas.js
-
-// Unicode
-// function Unistring(){
-//   let [i, setI] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => setI(i+3), 100);
-//     return () => {
-//       clearInterval(interval);
-//     };
-//   }, [i]);
-
-  
-//   return <Container style={{marginTop: "1em", fontSize: "10em", color: "white"}}>{String.fromCharCode(i+2)} {String.fromCharCode(i+1)} {String.fromCharCode(i)}</Container>
-// }
 
 // Utils
 function SocialsLogos(props){
