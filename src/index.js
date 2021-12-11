@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <meta
-      name="viewport"
-      content="minimum-scale=1, initial-scale=1, width=device-width"
-    />
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width"
+      />
+      <HashRouter>
+      <App/>
+      </HashRouter> 
+    </React.StrictMode>,
+    document.getElementById('root')
+  
 );
 
 // function sendVital(vitals){

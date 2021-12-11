@@ -24,3 +24,15 @@
 .Route {
   color: "black"
 }
+
+.MaterialUiTab {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.MaterialUiTab:hover {
+  color: #131313;
+  text-decoration: none;
+}
+
+
