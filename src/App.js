@@ -34,6 +34,8 @@ import asset_dialectPredictor from "./assets/dialectPredictor.png"
 
 import asset_phonetics_puzzle from "./assets/phonetics_puzzle.png"
 
+import asset_course_ranking from "./assets/course_ranking.png"
+
 // // // // Costume components
 const SymbolViewerContainer = lazy(() => import( "./symbolViewer/symbolViewerComponent"));
 const TriangleCanvasContainer = lazy(() => import("./sketches/trianglesCanvas"));
@@ -84,7 +86,8 @@ const useStyles = makeStyles((theme) => ({
 
   },
   generalContainer: {
-    marginTop: "3em"
+    marginTop: "3em",
+    width: "100%",
   },
   containerProfileImage: {
     borderRadius: "50%",
@@ -105,16 +108,22 @@ const useStyles = makeStyles((theme) => ({
     // },
     marginLeft: 0,
     maxWidth: "20em",
+    // float: "right",
+    alignItems: "left",
   },
   containerTwitgraphImage: {
-    // marginRight: "4em",
+    float: "right",
     [theme.breakpoints.down("xs")]: {
       maxWidth: "100%",
     },
     [theme.breakpoints.up("sm")]: {
       maxWidth: "25em",
     },
+    [theme.breakpoints.up("lg")]: {
+      maxWidth: "30em",
+    },
     marginLeft: 0,
+    marginRight: 0,
   },
   center: {
     justify: "center",
@@ -138,10 +147,11 @@ function TabsContentContainer(){
     2: ["Twitgraph", <TwitgraphContainer/>],
     3: ["Calbot", <Calbot/>],
     4: ["Dialect Predictor", <DialectPredictor/>],
-    5: ["Symbols", <SymbolViewerContainer/>],
-    6: ["Sketches", <TriangleCanvasContainer density={125} speed={0.03}/>],
+    5: ["Course Ranking", <CourseRanking/>],
+    6: ["Symbols", <SymbolViewerContainer/>],
     7: ["Grades Animator", <CandyBar/>],
-    8: ["Phonetics Puzzle", <PhoneticsPuzzle/>]
+    8: ["Phonetics Puzzle", <PhoneticsPuzzle/>],
+    9: ["Sketches", <TriangleCanvasContainer density={125} speed={0.03}/>],
   }
 
   let [activeTab, activeTabSet] = useState(
@@ -155,7 +165,7 @@ function TabsContentContainer(){
   }
 
   return (
-    <div>
+    <div style={{marginLeft: "0", marginRight: "0", paddingLeft: "0.0em", paddingRight: "1em"}}>
       <ScrollableTabsButtonAuto activeTab={activeTab} tabs={tabs} changeContent={(e, v) => activeTabSet(v)}/>
       <Suspense fallback="Waiting">
         {/* {displayCurrentTab()} */}
@@ -169,6 +179,7 @@ function TabsContentContainer(){
           <Route path="/Sketches"> <TriangleCanvasContainer density={125} speed={0.03}/> </Route>
           <Route path="/Grades Animator" component={CandyBar}/>
           <Route path="/Phonetics Puzzle" component={PhoneticsPuzzle}/>
+          <Route path="/Course Ranking" component={CourseRanking}/>
           <Route component={HomeContainer}/> {/* Catch all */}
         </Switch>
       </Suspense>
@@ -247,15 +258,15 @@ function ShowcaseContents(props){
                 </Button> : <div/>
   return (
     <Container style={{paddingTop: "3em", paddingBottom: "1em"}} className={classes.generalContainer}>
-        <Grid container spacing={2} justify="space-between" alignItems="center">
-        <Grid item xs={12} sm={12} md={6} xl={7} style={{paddingLeft: "0.0em", paddingRight: "1em"}}>
+        <Grid container spacing={2} justifyContent="space-between" alignItems="left">
+        <Grid item xs={12} sm={12} md={12} xl={7} style={{marginLeft: "0", marginRight: "0", paddingLeft: "0.0em", paddingRight: "1em"}}>
             <img
               className={props.imageClass}
               style={{borderRadius: "0.5em", boxShadow: "0 0 10px #000000"}}
               src={props.image}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={4} xl={4}>
+          <Grid item xs={12} sm={12} md={12} xl={4}>
             <Container style={{marginTop: "1em"}}>
               <h1 style={{marginBottom: "0"}}>{props.title},</h1> 
               <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>
@@ -352,6 +363,20 @@ function PhoneticsPuzzle(){
     link1Url: "https://phonetics.hawzen.me/",
     link1Text: "Visit",
     link2Url: "https://github.com/Hawzen/Phonetics-Puzzle",
+    link2Text: "Code",
+  });
+}
+
+function CourseRanking(){
+  const classes = useStyles();
+  return ShowcaseContents({
+    title: "Course Ranking",
+    description: "Analyzing King Saud University Computer Science Curriculum",
+    image: asset_course_ranking,
+    imageClass: classes.containerTwitgraphImage,
+    link1Url: "https://courses.hawzen.me/",
+    link1Text: "Visit",
+    link2Url: "https://github.com/Hawzen/Course-Ranking",
     link2Text: "Code",
   });
 }
