@@ -36,6 +36,9 @@ import asset_phonetics_puzzle from "./assets/phonetics_puzzle.png"
 
 import asset_course_ranking from "./assets/course_ranking.png"
 
+import asset_logo_with_tashkeel_nobackground from "./assets/logo_with_tashkeel_nobackground.png"
+import asset_logo_with_tashkeel from "./assets/logo_with_tashkeel.png"
+
 // // // // Costume components
 const SymbolViewerContainer = lazy(() => import( "./symbolViewer/symbolViewerComponent"));
 const TriangleCanvasContainer = lazy(() => import("./sketches/trianglesCanvas"));
@@ -143,15 +146,16 @@ const useStyles = makeStyles((theme) => ({
 function TabsContentContainer(){
   const tabs = {
     0: ["Home", <HomeContainer/>],
-    1: ["Whatboard", <WhatboardContainer/>],
-    2: ["Twitgraph", <TwitgraphContainer/>],
+    1: ["Twitgraph", <TwitgraphContainer/>],
+    2: ["Whatboard", <WhatboardContainer/>],
     3: ["Calbot", <Calbot/>],
     4: ["Dialect Predictor", <DialectPredictor/>],
-    5: ["Course Ranking", <CourseRanking/>],
-    6: ["Symbols", <SymbolViewerContainer/>],
-    7: ["Grades Animator", <CandyBar/>],
-    8: ["Phonetics Puzzle", <PhoneticsPuzzle/>],
-    9: ["Sketches", <TriangleCanvasContainer density={125} speed={0.03}/>],
+    5: ["Saheha Bot", <SahehaBot/>],
+    6: ["Course Ranking", <CourseRanking/>],
+    7: ["Symbols", <SymbolViewerContainer/>],
+    8: ["Grades Animator", <CandyBar/>],
+    9: ["Phonetics Puzzle", <PhoneticsPuzzle/>],
+    10: ["Sketches", <TriangleCanvasContainer density={125} speed={0.03}/>],
   }
 
   let [activeTab, activeTabSet] = useState(
@@ -175,6 +179,7 @@ function TabsContentContainer(){
           <Route path="/Twitgraph" component={TwitgraphContainer}/>
           <Route path="/Calbot" component={Calbot}/>
           <Route path="/Dialect Predictor" component={DialectPredictor}/>
+          <Route path="/Saheha Bot" component={SahehaBot}/>
           <Route path="/Symbols" component={SymbolViewerContainer}/>
           <Route path="/Sketches"> <TriangleCanvasContainer density={125} speed={0.03}/> </Route>
           <Route path="/Grades Animator" component={CandyBar}/>
@@ -325,6 +330,22 @@ function Calbot(){
     link2Text: "Code",
   });
 }
+
+function SahehaBot(){
+  const classes = useStyles();
+  return ShowcaseContents({
+    title: "Saheha",
+    description: "Sasheha is an automated correction and shaping bot",
+    image: asset_logo_with_tashkeel,
+    imageClass: classes.containerWhatboardImage,
+    link1Url: "https://twitter.com/saheha_bot",
+    link1Text: "Visit",
+    link2Url: "https://github.com/Hawzen/Whatboard",
+    link2Text: "Code",
+    button2: false,
+  });
+}
+
 
 function CandyBar(){
   const classes = useStyles();
