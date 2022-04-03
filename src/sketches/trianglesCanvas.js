@@ -25,12 +25,15 @@ let triangle = (props) => {
 	  }
 	  
 	  let pos = 50
-	  s1 = sketch.createSlider(0, 360, 219, 1);
+	  s1 = sketch.createSlider(0, 360, 220, 1);
 	  s1.position(10, pos);
-	  s2 = sketch.createSlider(0, 100, 36, 1);
+	  s1.hide();
+	  s2 = sketch.createSlider(0, 100, 30, 1);
 	  s2.position(10, pos+20);
-	  s3 = sketch.createSlider(0, 100, 56, 1);
+	  s2.hide()
+	  s3 = sketch.createSlider(0, 100, 35, 1);
 	  s3.position(10, pos+40);
+	  s3.hide()
 	}
 
 	const draw = (sketch) => {
@@ -63,6 +66,6 @@ let triangle = (props) => {
 	    }
 	  }
 	}
-	return <Sketch setup={setup} draw={draw}/>;
+	return <Sketch setup={setup} draw={draw} className="sketch-container"/>;
 }
 export default triangle;

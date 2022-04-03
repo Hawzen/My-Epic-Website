@@ -61,7 +61,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#4C566A',
-      main: '#434C5E',
+      main: '#414d6f',
       dark: '#2E3440',
     },
     secondary: {
@@ -172,6 +172,7 @@ function TabsContentContainer(){
     <div style={{marginLeft: "0", marginRight: "0", paddingLeft: "0.0em", paddingRight: "1em"}}>
       <ScrollableTabsButtonAuto activeTab={activeTab} tabs={tabs} changeContent={(e, v) => activeTabSet(v)}/>
       <Suspense fallback="Waiting">
+        <TriangleCanvasContainer density={125} speed={0.03}/>
         {/* {displayCurrentTab()} */}
         <Switch>
           {/* <Route exact path="/" component={HomeContainer}/> */}
@@ -236,21 +237,24 @@ function GeneralContainer(props){
 function HomeContainer(){
   const classes = useStyles();
   return (
-    <Container>
-      <GeneralContainer
-        left={<img src={profileImg} alt="profile" className={classes.containerProfileImage}/>}
-        right={
-              <Container>
-                <h1 style={{marginBottom: "0"}}>Hi,</h1> 
-                <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>
-                  This website is a personal repository of projects.&nbsp;
-                  <a style={{color: '#4C566A', fontSize: "0.7em"}} href="https://www.nordtheme.com/" target="_blank" rel="noreferrer">❄️</a>
-                </h2>
-                <SocialsLogos spacing={3}/>
-              </Container>
-              }
-      />
-    </Container>
+    <div>
+      <Container>
+        
+        <GeneralContainer
+          left={<img src={profileImg} alt="profile" className={classes.containerProfileImage}/>}
+          right={
+                <Container>
+                  <h1 style={{marginBottom: "0"}}>Hi,</h1> 
+                  <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>
+                    This website is a personal repository of projects.&nbsp;
+                    <a style={{color: '#4C566A', fontSize: "0.7em"}} href="https://www.nordtheme.com/" target="_blank" rel="noreferrer">❄️</a>
+                  </h2>
+                  <SocialsLogos spacing={3}/>
+                </Container>
+                }
+        />
+      </Container>
+    </div>
   );
 }
 

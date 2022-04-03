@@ -296,13 +296,13 @@ function InfoContainer(props){
                         </Grid>
                     </Grid>
             </Collapse>
-            <Grid container className={classes.infoBottomBar}>
-                <Grid item>
-                    <Typography variant="inherit" color="primary" style={{}}>
+            <Grid container >
+                <Grid item className={classes.infoBottomBar}>
+                    <Typography variant="inherit" color="secondary" style={{}}>
                         {symbol.code}/10FFFF
                     </Typography>
                 </Grid>
-                <Grid item>
+                <Grid item className={classes.infoBottomBar}>
                     <Switch onChange={() => setIsOpen(!isOpen)}/>
                 </Grid>
             </Grid>
@@ -457,8 +457,13 @@ const useStyles = makeStyles((theme) => ({
     },
     infoBottomBar: {
         margin: "auto", 
+        padding: "auto",
+        right: 0,
         [theme.breakpoints.down("sm")]:{
             paddingLeft: "1em"
+        },
+        [theme.breakpoints.down("xs")]:{
+            paddingLeft: "5em"
         },
     },
 }));

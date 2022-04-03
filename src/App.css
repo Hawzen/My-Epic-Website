@@ -1,12 +1,18 @@
 .App {
-  
+  z-index: 10;
+}
+
+.things {
+  box-shadow: inset 0px 0px 18px 0px rgba(0, 0, 0, 0.3);
 }
 
 .App-body {
-  background-color: #2E3440;
+  /* background-color: #2E3440; */
+  /* z-index: 0; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  
   /* align-items: center; */
   justify-content: left;
   font-size: calc(10px + 2vmin);
@@ -35,4 +41,12 @@
   text-decoration: none;
 }
 
-
+.sketch-container {
+  position: fixed;
+  z-index: -1;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 1;
+}
