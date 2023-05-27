@@ -314,10 +314,9 @@ function TwitgraphContainer(){
     description: "Generates an interactive network of social clusters related to any twitter profile",
     image: assets_squareTwitgraph,
     imageClass: classes.containerTwitgraphImage,
-    link1Url: "https://twitgraph.hawzen.me/",
-    link1Text: "Demo",
-    link2Url: "https://github.com/Hawzen/Twitgraph",
-    link2Text: "Code",
+    link1Url: "https://github.com/Hawzen/Twitgraph",
+    link1Text: "Code",
+    button2: false,
   });
 }
 
@@ -371,8 +370,8 @@ function DialectPredictor(){
     title: "Dialect Predictor",
     description: "Predicts Arabic dialects using Machine Learning!",
     image: asset_dialectPredictor,
-    imageClass: classes.containerTwitgraphImage,
-    link1Url: "https://dialect.hawzen.me/",
+    imageClass: classes.containerWhatboardImage,
+    link1Url: "https://arabic.hawzen.me/",
     link1Text: "Visit",
     button2: false,
   });
