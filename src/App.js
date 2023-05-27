@@ -42,6 +42,7 @@ import asset_logo_with_tashkeel from "./assets/logo_with_tashkeel.png"
 // // // // Costume components
 const SymbolViewerContainer = lazy(() => import( "./symbolViewer/symbolViewerComponent"));
 const TriangleCanvasContainer = lazy(() => import("./sketches/trianglesCanvas"));
+const CirclesCanvasContainer =  lazy(() => import("./sketches/goldenCircles.js"));
 // App
 export default function App() {
   return (
@@ -155,7 +156,7 @@ function TabsContentContainer(){
     7: ["Symbols", <SymbolViewerContainer/>],
     8: ["Grades Animator", <CandyBar/>],
     9: ["Phonetics Puzzle", <PhoneticsPuzzle/>],
-    10: ["Sketches", <TriangleCanvasContainer density={125} speed={0.03}/>],
+    10: ["Circles", <CirclesCanvasContainer/>],
   }
 
   let [activeTab, activeTabSet] = useState(
@@ -182,7 +183,7 @@ function TabsContentContainer(){
           <Route path="/Dialect Predictor" component={DialectPredictor}/>
           <Route path="/Saheha Bot" component={SahehaBot}/>
           <Route path="/Symbols" component={SymbolViewerContainer}/>
-          <Route path="/Sketches"> <TriangleCanvasContainer density={125} speed={0.03}/> </Route>
+          <Route path="/Circles"> <CirclesCanvasContainer/> </Route>
           <Route path="/Grades Animator" component={CandyBar}/>
           <Route path="/Phonetics Puzzle" component={PhoneticsPuzzle}/>
           <Route path="/Course Ranking" component={CourseRanking}/>
