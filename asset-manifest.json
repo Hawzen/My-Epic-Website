@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.d83f2dc1.chunk.css",
-    "main.js": "/static/js/main.243d146e.chunk.js",
-    "main.js.map": "/static/js/main.243d146e.chunk.js.map",
+    "main.js": "/static/js/main.cac7a974.chunk.js",
+    "main.js.map": "/static/js/main.cac7a974.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.4cec0785.js",
     "runtime-main.js.map": "/static/js/runtime-main.4cec0785.js.map",
     "static/css/2.8c502dfb.chunk.css": "/static/css/2.8c502dfb.chunk.css",
@@ -25,7 +25,7 @@
     "static/media/calbotFonts.e13af205.png": "/static/media/calbotFonts.e13af205.png",
     "static/media/candyBar.12fd6942.png": "/static/media/candyBar.12fd6942.png",
     "static/media/course_ranking.a0a350a5.png": "/static/media/course_ranking.a0a350a5.png",
-    "static/media/dialectPredictor.713acff5.png": "/static/media/dialectPredictor.713acff5.png",
+    "static/media/dialectPredictor.4f49132f.png": "/static/media/dialectPredictor.4f49132f.png",
     "static/media/distribution2.5014092f.png": "/static/media/distribution2.5014092f.png",
     "static/media/githubLogo.519d376e.png": "/static/media/githubLogo.519d376e.png",
     "static/media/linkedinLogo.692cae71.png": "/static/media/linkedinLogo.692cae71.png",
@@ -41,6 +41,6 @@
     "static/css/2.8c502dfb.chunk.css",
     "static/js/2.96f3d342.chunk.js",
     "static/css/main.d83f2dc1.chunk.css",
-    "static/js/main.243d146e.chunk.js"
+    "static/js/main.cac7a974.chunk.js"
   ]
 }
