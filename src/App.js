@@ -17,25 +17,17 @@ import { Switch, Route, Link } from "react-router-dom";
 
 // // // // Assets
 import profileImg from "./assets/profile.jpg";
-
 import assets_logo_githubLogo from "./assets/logos/githubLogo.png";
 import assets_logo_twitterLogo from "./assets/logos/twitterLogo.png";
 import assets_logo_linkedInLogo from "./assets/logos/linkedinLogo.png";
-
 import assets_distribution2 from "./assets/distribution2.png";
-
 import assets_squareTwitgraph from "./assets/squareTwitgraph.png";
-
 import assets_calbotFonts from "./assets/calbotFonts.png";
-
 import assets_candyBar from "./assets/candyBar.png";
-
 import asset_dialectPredictor from "./assets/dialectPredictor.png"
-
 import asset_phonetics_puzzle from "./assets/phonetics_puzzle.png"
-
 import asset_course_ranking from "./assets/course_ranking.png"
-
+import asset_gopher_crawler from "./assets/gopher.png"
 import asset_logo_with_tashkeel_nobackground from "./assets/logo_with_tashkeel_nobackground.png"
 import asset_logo_with_tashkeel from "./assets/logo_with_tashkeel.png"
 
@@ -147,16 +139,17 @@ const useStyles = makeStyles((theme) => ({
 function TabsContentContainer(){
   const tabs = {
     0: ["Home", <HomeContainer/>],
-    1: ["Twitgraph", <TwitgraphContainer/>],
-    2: ["Whatboard", <WhatboardContainer/>],
-    3: ["Calbot", <Calbot/>],
-    4: ["Dialect Predictor", <DialectPredictor/>],
-    5: ["Saheha Bot", <SahehaBot/>],
-    6: ["Course Ranking", <CourseRanking/>],
-    7: ["Symbols", <SymbolViewerContainer/>],
-    8: ["Grades Animator", <CandyBar/>],
-    9: ["Phonetics Puzzle", <PhoneticsPuzzle/>],
-    10: ["Circles", <CirclesCanvasContainer/>],
+    1: ["Gopher Crawler", <GopherCrawler/>],
+    2: ["Twitgraph", <TwitgraphContainer/>],
+    3: ["Whatboard", <WhatboardContainer/>],
+    4: ["Calbot", <Calbot/>],
+    5: ["Dialect Predictor", <DialectPredictor/>],
+    6: ["Saheha Bot", <SahehaBot/>],
+    7: ["Course Ranking", <CourseRanking/>],
+    8: ["Symbols", <SymbolViewerContainer/>],
+    9: ["Grades Animator", <CandyBar/>],
+    10: ["Phonetics Puzzle", <PhoneticsPuzzle/>],
+    11: ["Circles", <CirclesCanvasContainer/>],
   }
 
   let [activeTab, activeTabSet] = useState(
@@ -173,7 +166,7 @@ function TabsContentContainer(){
     <div style={{marginLeft: "0", marginRight: "0", paddingLeft: "0.0em", paddingRight: "1em"}}>
       <ScrollableTabsButtonAuto activeTab={activeTab} tabs={tabs} changeContent={(e, v) => activeTabSet(v)}/>
       <Suspense fallback="Waiting">
-        <TriangleCanvasContainer density={125} speed={0.03}/>
+        <TriangleCanvasContainer density={150} speed={0.03}/>
         {/* {displayCurrentTab()} */}
         <Switch>
           {/* <Route exact path="/" component={HomeContainer}/> */}
@@ -187,6 +180,7 @@ function TabsContentContainer(){
           <Route path="/Grades Animator" component={CandyBar}/>
           <Route path="/Phonetics Puzzle" component={PhoneticsPuzzle}/>
           <Route path="/Course Ranking" component={CourseRanking}/>
+          <Route path="/Gopher Crawler" component={GopherCrawler}/>
           <Route component={HomeContainer}/> {/* Catch all */}
         </Switch>
       </Suspense>
@@ -300,7 +294,7 @@ function WhatboardContainer(){
     title: "Whatboard",
     description: "An online whatsapp chat analysis tool",
     image: assets_distribution2,
-    imageClass: classes.containerWhatboardImage,
+    imageClass: classes.containerTwitgraphImage,
     link1Url: "https://whatboard.hawzen.me",
     link1Text: "Visit",
     link2Url: "https://github.com/Hawzen/Whatboard",
@@ -339,9 +333,9 @@ function SahehaBot(){
   const classes = useStyles();
   return ShowcaseContents({
     title: "Saheha",
-    description: "Sasheha is an automated correction and shaping bot",
+    description: "Saheha is an automated correction and shaping bot",
     image: asset_logo_with_tashkeel,
-    imageClass: classes.containerWhatboardImage,
+    imageClass: classes.containerTwitgraphImage,
     link1Url: "https://twitter.com/saheha_bot",
     link1Text: "Visit",
     link2Url: "https://github.com/Hawzen/Whatboard",
@@ -371,7 +365,7 @@ function DialectPredictor(){
     title: "Dialect Predictor",
     description: "Predicts Arabic dialects using Machine Learning!",
     image: asset_dialectPredictor,
-    imageClass: classes.containerWhatboardImage,
+    imageClass: classes.containerTwitgraphImage,
     link1Url: "https://arabic.hawzen.me/",
     link1Text: "Visit",
     button2: false,
@@ -403,6 +397,19 @@ function CourseRanking(){
     link1Text: "Visit",
     link2Url: "https://github.com/Hawzen/Course-Ranking",
     link2Text: "Code",
+  });
+}
+
+function GopherCrawler(){
+  const classes = useStyles();
+  return ShowcaseContents({
+    title: "Gopher Crawler",
+    description: "A web crawler built with Go!",
+    image: asset_gopher_crawler, // Replace with the actual image asset
+    imageClass: classes.containerTwitgraphImage,
+    button2: false,
+    link1Url: "https://github.com/Hawzen/Gopher-Crawler", // Replace with the actual GitHub URL
+    link1Text: "Code",
   });
 }
 
