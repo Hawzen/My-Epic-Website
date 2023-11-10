@@ -28,7 +28,6 @@ import asset_dialectPredictor from "./assets/dialectPredictor.png"
 import asset_phonetics_puzzle from "./assets/phonetics_puzzle.png"
 import asset_course_ranking from "./assets/course_ranking.png"
 import asset_gopher_crawler from "./assets/gopher.png"
-import asset_logo_with_tashkeel_nobackground from "./assets/logo_with_tashkeel_nobackground.png"
 import asset_logo_with_tashkeel from "./assets/logo_with_tashkeel.png"
 
 // // // // Costume components
@@ -108,19 +107,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "left",
   },
   containerTwitgraphImage: {
-    float: "right",
-    [theme.breakpoints.down("xs")]: {
-      maxWidth: "100%",
-    },
-    [theme.breakpoints.up("sm")]: {
-      maxWidth: "25em",
-    },
-    [theme.breakpoints.up("lg")]: {
-      maxWidth: "30em",
-    },
-    marginLeft: 0,
-    marginRight: 0,
-  },
+    // float: "right",
+    borderRadius: "0.5em", 
+    boxShadow: "0 0 10px #000000",
+    objectFit: "cover",
+    maxWidth: "100%",
+    height: "auto",
+},
   center: {
     justify: "center",
     justifyContent: "center",
@@ -216,7 +209,7 @@ function ScrollableTabsButtonAuto(props) {
 function GeneralContainer(props){
   const classes = useStyles();
   return (
-    <Container style={{paddingTop: "3em"}} className={classes.generalContainer}>
+    <Container style={{paddingTop: "3em", textShadow: "0 0 20px #000000"}} className={classes.generalContainer}>
         <Grid container spacing={2} justify="space-between" alignItems="center">
           <Grid item xs={12} sm={6} md={5} style={{paddingLeft: "3em"}}>
             {props.left}
@@ -242,7 +235,7 @@ function HomeContainer(){
                   <h1 style={{marginBottom: "0"}}>Hi,</h1> 
                   <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>
                     This website is a personal repository of projects.&nbsp;
-                    <a style={{color: '#4C566A', fontSize: "0.7em"}} href="https://www.nordtheme.com/" target="_blank" rel="noreferrer">❄️</a>
+                    <a style={{fontSize: "0.7em"}}>❄️</a>
                   </h2>
                   <SocialsLogos spacing={3}/>
                 </Container>
@@ -261,18 +254,11 @@ function ShowcaseContents(props){
                   {props.link2Text}
                 </Button> : <div/>
   return (
-    <Container style={{paddingTop: "3em", paddingBottom: "1em"}} className={classes.generalContainer}>
-        <Grid container spacing={2} justifyContent="space-between" alignItems="left">
-        <Grid item xs={12} sm={12} md={12} xl={7} style={{marginLeft: "0", marginRight: "0", paddingLeft: "0.0em", paddingRight: "1em"}}>
-            <img
-              className={props.imageClass}
-              style={{borderRadius: "0.5em", boxShadow: "0 0 10px #000000"}}
-              src={props.image}
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} xl={4}>
+    <Container style={{paddingTop: "3em", paddingBottom: "1em", textShadow: "0 0 20px #000000"}} className={classes.generalContainer}>
+        <Grid container spacing={6} justifyContent="space-between" alignItems="left">
+          <Grid item xs={12} sm={12} md={6} xl={6}>
             <Container style={{marginTop: "1em"}}>
-              <h1 style={{marginBottom: "0"}}>{props.title},</h1> 
+              <h1 style={{marginBottom: "0"}}>{props.title}</h1>
               <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>
                 {props.description}
               </h2>
@@ -282,6 +268,12 @@ function ShowcaseContents(props){
               {button2}
 
             </Container>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} xl={6}>
+            <img
+              className={props.imageClass}
+              src={props.image}
+            />
           </Grid>
         </Grid>
     </Container>
