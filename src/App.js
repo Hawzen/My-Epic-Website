@@ -1,18 +1,18 @@
 import React, { useState, lazy, Suspense } from "react";
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { 
-  AppBar, 
-  Tab, 
-  makeStyles, 
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  AppBar,
+  Tab,
+  makeStyles,
   Tabs,
   TabPanel,
-  ThemeProvider, 
-  Grid, 
+  ThemeProvider,
+  Grid,
   Container,
   Button,
-} from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
+} from "@material-ui/core";
+import { createMuiTheme } from "@material-ui/core/styles";
 import { Switch, Route, Link } from "react-router-dom";
 
 // // // // Assets
@@ -24,27 +24,32 @@ import assets_distribution2 from "./assets/distribution2.png";
 import assets_squareTwitgraph from "./assets/squareTwitgraph.png";
 import assets_calbotFonts from "./assets/calbotFonts.png";
 import assets_candyBar from "./assets/candyBar.png";
-import asset_dialectPredictor from "./assets/dialectPredictor.png"
-import asset_phonetics_puzzle from "./assets/phonetics_puzzle.png"
-import asset_course_ranking from "./assets/course_ranking.png"
-import asset_gopher_crawler from "./assets/gopher.png"
-import asset_logo_with_tashkeel from "./assets/logo_with_tashkeel.png"
+import asset_dialectPredictor from "./assets/dialectPredictor.png";
+import asset_phonetics_puzzle from "./assets/phonetics_puzzle.png";
+import asset_course_ranking from "./assets/course_ranking.png";
+import asset_gopher_crawler from "./assets/gopher.png";
+import asset_logo_with_tashkeel from "./assets/logo_with_tashkeel.png";
 
 // // // // Costume components
-const SymbolViewerContainer = lazy(() => import( "./symbolViewer/symbolViewerComponent"));
-const TriangleCanvasContainer = lazy(() => import("./sketches/trianglesCanvas"));
-const CirclesCanvasContainer =  lazy(() => import("./sketches/goldenCircles.js"));
+const SymbolViewerContainer = lazy(() =>
+  import("./symbolViewer/symbolViewerComponent")
+);
+const TriangleCanvasContainer = lazy(() =>
+  import("./sketches/trianglesCanvas")
+);
+const CirclesCanvasContainer = lazy(() =>
+  import("./sketches/goldenCircles.js")
+);
 // App
 export default function App() {
   return (
-        <div className="App">
-          <header className="App-body">
-          
-            <ThemeProvider theme={theme}>
-              <TabsContentContainer/>
-            </ThemeProvider>
-          </header>
-        </div>
+    <div className="App">
+      <header className="App-body">
+        <ThemeProvider theme={theme}>
+          <TabsContentContainer />
+        </ThemeProvider>
+      </header>
+    </div>
   );
 }
 
@@ -52,14 +57,14 @@ export default function App() {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#4C566A',
-      main: '#414d6f',
-      dark: '#2E3440',
+      light: "#4C566A",
+      main: "#414d6f",
+      dark: "#2E3440",
     },
     secondary: {
-      light: '#ECEFF4',
-      main: '#E5E9F0' ,
-      dark: '#D8DEE9',
+      light: "#ECEFF4",
+      main: "#E5E9F0",
+      dark: "#D8DEE9",
     },
   },
 });
@@ -77,9 +82,7 @@ Nord pallet
  */
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-
-  },
+  root: {},
   generalContainer: {
     marginTop: "3em",
     width: "100%",
@@ -108,77 +111,94 @@ const useStyles = makeStyles((theme) => ({
   },
   containerTwitgraphImage: {
     // float: "right",
-    borderRadius: "0.5em", 
+    borderRadius: "0.5em",
     boxShadow: "0 0 10px #000000",
     objectFit: "cover",
     maxWidth: "100%",
     height: "auto",
-},
+  },
   center: {
     justify: "center",
     justifyContent: "center",
     justifyItems: "center",
     alignContent: "center",
     alignSelf: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   socialsLogo: {
     maxWidth: "2em",
     // boxShadow: "0 0 4px #4C566A"
-  }
+  },
 }));
 
 // Tabs and content container
-function TabsContentContainer(){
+function TabsContentContainer() {
   const tabs = {
-    0: ["Home", <HomeContainer/>],
-    1: ["Gopher Crawler", <GopherCrawler/>],
-    2: ["Twitgraph", <TwitgraphContainer/>],
-    3: ["Whatboard", <WhatboardContainer/>],
-    4: ["Calbot", <Calbot/>],
-    5: ["Dialect Predictor", <DialectPredictor/>],
-    6: ["Saheha Bot", <SahehaBot/>],
-    7: ["Course Ranking", <CourseRanking/>],
-    8: ["Symbols", <SymbolViewerContainer/>],
-    9: ["Grades Animator", <CandyBar/>],
-    10: ["Phonetics Puzzle", <PhoneticsPuzzle/>],
-    11: ["Circles", <CirclesCanvasContainer/>],
-  }
+    0: ["Home", <HomeContainer />],
+    1: ["Gopher Crawler", <GopherCrawler />],
+    2: ["Twitgraph", <TwitgraphContainer />],
+    3: ["Whatboard", <WhatboardContainer />],
+    4: ["Calbot", <Calbot />],
+    5: ["Dialect Predictor", <DialectPredictor />],
+    6: ["Saheha Bot", <SahehaBot />],
+    7: ["Course Ranking", <CourseRanking />],
+    8: ["Symbols", <SymbolViewerContainer />],
+    9: ["Grades Animator", <CandyBar />],
+    10: ["Phonetics Puzzle", <PhoneticsPuzzle />],
+    11: ["Circles", <CirclesCanvasContainer />],
+  };
 
   let [activeTab, activeTabSet] = useState(
-    (Object.entries(tabs).map( (v, i) => window.location.hash.replace("%20", " ") === `#/${v[1][0]}`).indexOf(true))
+    Object.entries(tabs)
+      .map(
+        (v, i) => window.location.hash.replace("%20", " ") === `#/${v[1][0]}`
+      )
+      .indexOf(true)
   );
 
   const displayCurrentTab = () => {
-    if(activeTab in tabs)
-      return tabs[activeTab]
-    return <HomeContainer/>
-  }
+    if (activeTab in tabs) return tabs[activeTab];
+    return <HomeContainer />;
+  };
 
   return (
-    <div style={{marginLeft: "0", marginRight: "0", paddingLeft: "0.0em", paddingRight: "1em"}}>
-      <ScrollableTabsButtonAuto activeTab={activeTab} tabs={tabs} changeContent={(e, v) => activeTabSet(v)}/>
+    <div
+      style={{
+        marginLeft: "0",
+        marginRight: "0",
+        paddingLeft: "0.0em",
+        paddingRight: "1em",
+      }}
+    >
+      <ScrollableTabsButtonAuto
+        activeTab={activeTab}
+        tabs={tabs}
+        changeContent={(e, v) => activeTabSet(v)}
+      />
       <Suspense fallback="Waiting">
-        <TriangleCanvasContainer density={150} speed={0.03}/>
+        <TriangleCanvasContainer density={150} speed={0.03} />
         {/* {displayCurrentTab()} */}
         <Switch>
           {/* <Route exact path="/" component={HomeContainer}/> */}
-          <Route path="/Whatboard" component={WhatboardContainer}/>
-          <Route path="/Twitgraph" component={TwitgraphContainer}/>
-          <Route path="/Calbot" component={Calbot}/>
-          <Route path="/Dialect Predictor" component={DialectPredictor}/>
-          <Route path="/Saheha Bot" component={SahehaBot}/>
-          <Route path="/Symbols" component={SymbolViewerContainer}/>
-          <Route path="/Circles"> <CirclesCanvasContainer/> </Route>
-          <Route path="/Grades Animator" component={CandyBar}/>
-          <Route path="/Phonetics Puzzle" component={PhoneticsPuzzle}/>
-          <Route path="/Course Ranking" component={CourseRanking}/>
-          <Route path="/Gopher Crawler" component={GopherCrawler}/>
-          <Route component={HomeContainer}/> {/* Catch all */}
+          <Route path="/Whatboard" component={WhatboardContainer} />
+          <Route path="/Twitgraph" component={TwitgraphContainer} />
+          <Route path="/Calbot" component={Calbot} />
+          <Route path="/Dialect Predictor" component={DialectPredictor} />
+          <Route path="/Saheha Bot" component={SahehaBot} />
+          <Route path="/Symbols" component={SymbolViewerContainer} />
+          <Route path="/Circles">
+            {" "}
+            <CirclesCanvasContainer />{" "}
+          </Route>
+          <Route path="/Grades Animator" component={CandyBar} />
+          <Route path="/Phonetics Puzzle" component={PhoneticsPuzzle} />
+          <Route path="/Course Ranking" component={CourseRanking} />
+          <Route path="/Gopher Crawler" component={GopherCrawler} />
+          <Route component={HomeContainer} /> {/* Catch all */}
         </Switch>
       </Suspense>
     </div>
-  )
+  );
 }
 
 // Tabs
@@ -186,7 +206,7 @@ function ScrollableTabsButtonAuto(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-    <Suspense fallback="">
+      <Suspense fallback="">
         <AppBar color="primary">
           <Tabs
             value={props.activeTab}
@@ -197,7 +217,15 @@ function ScrollableTabsButtonAuto(props) {
             variant="scrollable"
             scrollButtons="auto"
           >
-          {Object.entries(props.tabs).map( (v, i) => <Tab label={v[1][0]} key={i} component={Link} className="MaterialUiTab" to={v[1][0]}/> )}
+            {Object.entries(props.tabs).map((v, i) => (
+              <Tab
+                label={v[1][0]}
+                key={i}
+                component={Link}
+                className="MaterialUiTab"
+                to={v[1][0]}
+              />
+            ))}
           </Tabs>
         </AppBar>
       </Suspense>
@@ -206,81 +234,112 @@ function ScrollableTabsButtonAuto(props) {
 }
 
 // // Content
-function GeneralContainer(props){
+function GeneralContainer(props) {
   const classes = useStyles();
   return (
-    <Container style={{paddingTop: "3em", textShadow: "0 0 20px #000000"}} className={classes.generalContainer}>
-        <Grid container spacing={2} justify="space-between" alignItems="center">
-          <Grid item xs={12} sm={6} md={5} style={{paddingLeft: "3em"}}>
-            {props.left}
-          </Grid>
-          <Grid item xs={12} sm={6} md={5}>
-            {props.right}
-          </Grid>
+    <Container
+      style={{ paddingTop: "3em", textShadow: "0 0 20px #000000" }}
+      className={classes.generalContainer}
+    >
+      <Grid container spacing={2} justify="space-between" alignItems="center">
+        <Grid item xs={12} sm={6} md={5} style={{ paddingLeft: "3em" }}>
+          {props.left}
         </Grid>
+        <Grid item xs={12} sm={6} md={5}>
+          {props.right}
+        </Grid>
+      </Grid>
     </Container>
   );
 }
 
-function HomeContainer(){
+function HomeContainer() {
   const classes = useStyles();
   return (
     <div>
       <Container>
-        
         <GeneralContainer
-          left={<img src={profileImg} alt="profile" className={classes.containerProfileImage}/>}
+          left={
+            <img
+              src={profileImg}
+              alt="profile"
+              className={classes.containerProfileImage}
+            />
+          }
           right={
-                <Container>
-                  <h1 style={{marginBottom: "0"}}>Hi,</h1> 
-                  <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>
-                    This website is a personal repository of projects.&nbsp;
-                    <a style={{fontSize: "0.7em"}}>❄️</a>
-                  </h2>
-                  <SocialsLogos spacing={3}/>
-                </Container>
-                }
+            <Container>
+              <h1 style={{ marginBottom: "0" }}>Hi,</h1>
+              <h2 style={{ marginTop: ".4em", marginBottom: ".9em" }}>
+                This website is a personal repository of projects.&nbsp;
+                <a style={{ fontSize: "0.7em" }}>❄️</a>
+              </h2>
+              <SocialsLogos spacing={3} />
+            </Container>
+          }
         />
       </Container>
     </div>
   );
 }
 
-function ShowcaseContents(props){
+function ShowcaseContents(props) {
   const classes = useStyles();
 
-  const button2 = props.button2 == undefined ?
-                <Button style={{marginLeft: "1em"}} variant="contained" color="secondary" href={props.link2Url} target="_blank">
-                  {props.link2Text}
-                </Button> : <div/>
+  const button2 =
+    props.button2 == undefined ? (
+      <Button
+        style={{ marginLeft: "1em" }}
+        variant="contained"
+        color="secondary"
+        href={props.link2Url}
+        target="_blank"
+      >
+        {props.link2Text}
+      </Button>
+    ) : (
+      <div />
+    );
   return (
-    <Container style={{paddingTop: "3em", paddingBottom: "1em", textShadow: "0 0 20px #000000"}} className={classes.generalContainer}>
-        <Grid container spacing={6} justifyContent="space-between" alignItems="left">
-          <Grid item xs={12} sm={12} md={6} xl={6}>
-            <Container style={{marginTop: "1em"}}>
-              <h1 style={{marginBottom: "0"}}>{props.title}</h1>
-              <h2 style={{marginTop: ".4em", marginBottom: ".9em"}}>
-                {props.description}
-              </h2>
-              <Button variant="contained" color="primary" href={props.link1Url} target="_blank">
-                {props.link1Text}
-              </Button> 
-              {button2}
-
-            </Container>
-          </Grid>
-          <Grid item xs={12} sm={12} md={6} xl={6}>
-            <img
-              className={props.imageClass}
-              src={props.image}
-            />
-          </Grid>
+    <Container
+      style={{
+        paddingTop: "3em",
+        paddingBottom: "1em",
+        textShadow: "0 0 20px #000000",
+      }}
+      className={classes.generalContainer}
+    >
+      <Grid
+        container
+        spacing={6}
+        justifyContent="space-between"
+        alignItems="left"
+      >
+        <Grid item xs={12} sm={12} md={6} xl={6}>
+          <Container style={{ marginTop: "1em" }}>
+            <h1 style={{ marginBottom: "0" }}>{props.title}</h1>
+            <h2 style={{ marginTop: ".4em", marginBottom: ".9em" }}>
+              {props.description}
+            </h2>
+            <Button
+              variant="contained"
+              color="primary"
+              href={props.link1Url}
+              target="_blank"
+            >
+              {props.link1Text}
+            </Button>
+            {button2}
+          </Container>
         </Grid>
+        <Grid item xs={12} sm={12} md={6} xl={6}>
+          <img className={props.imageClass} src={props.image} />
+        </Grid>
+      </Grid>
     </Container>
   );
 }
 
-function WhatboardContainer(){
+function WhatboardContainer() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Whatboard",
@@ -294,11 +353,12 @@ function WhatboardContainer(){
   });
 }
 
-function TwitgraphContainer(){
+function TwitgraphContainer() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Twitgraph",
-    description: "Generates an interactive network of social clusters related to any twitter profile",
+    description:
+      "Generates an interactive network of social clusters related to any twitter profile",
     image: assets_squareTwitgraph,
     imageClass: classes.containerTwitgraphImage,
     link1Url: "https://github.com/Hawzen/Twitgraph",
@@ -307,7 +367,7 @@ function TwitgraphContainer(){
   });
 }
 
-function Calbot(){
+function Calbot() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Calbot",
@@ -321,7 +381,7 @@ function Calbot(){
   });
 }
 
-function SahehaBot(){
+function SahehaBot() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Saheha",
@@ -336,8 +396,7 @@ function SahehaBot(){
   });
 }
 
-
-function CandyBar(){
+function CandyBar() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Grades Animator",
@@ -351,7 +410,7 @@ function CandyBar(){
   });
 }
 
-function DialectPredictor(){
+function DialectPredictor() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Dialect Predictor",
@@ -364,7 +423,7 @@ function DialectPredictor(){
   });
 }
 
-function PhoneticsPuzzle(){
+function PhoneticsPuzzle() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Phonetics Puzzle",
@@ -378,7 +437,7 @@ function PhoneticsPuzzle(){
   });
 }
 
-function CourseRanking(){
+function CourseRanking() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Course Ranking",
@@ -392,7 +451,7 @@ function CourseRanking(){
   });
 }
 
-function GopherCrawler(){
+function GopherCrawler() {
   const classes = useStyles();
   return ShowcaseContents({
     title: "Gopher Crawler",
@@ -406,20 +465,45 @@ function GopherCrawler(){
 }
 
 // Utils
-function SocialsLogos(props){
+function SocialsLogos(props) {
   const classes = useStyles();
   return (
     <Grid container spacing={props.spacing}>
       <Grid item>
-        <a rel="noreferrer" target="_blank" href="https://github.com/Hawzen"><img alt="github"  src={assets_logo_githubLogo} className={classes.socialsLogo}/></a>
+        <a rel="noreferrer" target="_blank" href="https://github.com/Hawzen">
+          <img
+            alt="github"
+            src={assets_logo_githubLogo}
+            className={classes.socialsLogo}
+          />
+        </a>
       </Grid>
       <Grid item>
-        <a rel="noreferrer" target="_blank" href="https://twitter.com/MohndAlrasheed"><img alt="twitter" src={assets_logo_twitterLogo} className={classes.socialsLogo}/></a>
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href="https://twitter.com/MohndAlrasheed"
+        >
+          <img
+            alt="twitter"
+            src={assets_logo_twitterLogo}
+            className={classes.socialsLogo}
+          />
+        </a>
       </Grid>
       <Grid item>
-        <a rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/mohand-alrasheed/"><img alt="linkedin" src={assets_logo_linkedInLogo} className={classes.socialsLogo}/></a>
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href="https://www.linkedin.com/in/mohand-alrasheed/"
+        >
+          <img
+            alt="linkedin"
+            src={assets_logo_linkedInLogo}
+            className={classes.socialsLogo}
+          />
+        </a>
       </Grid>
     </Grid>
   );
 }
-
