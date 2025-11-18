@@ -1,1 +1,463 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="shortcut icon" type="image/x-icon" href="/react-gh-pages/icon.ico"><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;1,700&display=swap" rel="stylesheet"><meta name="theme-color" content="#000000"/><meta name="Hawzen" content="Hawzen repo of things"/><link rel="apple-touch-icon" href="/react-gh-pages/logo192.png"/><link rel="manifest" href="/react-gh-pages/manifest.json"/><title>Hawzen's Repo</title><link href="/react-gh-pages/static/css/3.4c97ca4f.chunk.css" rel="stylesheet"><link href="/react-gh-pages/static/css/main.d15855ce.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(e){function r(r){for(var n,a,c=r[0],i=r[1],f=r[2],s=0,p=[];s<c.length;s++)a=c[s],Object.prototype.hasOwnProperty.call(o,a)&&o[a]&&p.push(o[a][0]),o[a]=0;for(n in i)Object.prototype.hasOwnProperty.call(i,n)&&(e[n]=i[n]);for(l&&l(r);p.length;)p.shift()();return u.push.apply(u,f||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,c=1;c<t.length;c++){var i=t[c];0!==o[i]&&(n=!1)}n&&(u.splice(r--,1),e=a(a.s=t[0]))}return e}var n={},o={2:0},u=[];function a(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,a),t.l=!0,t.exports}a.e=function(e){var r=[],t=o[e];if(0!==t)if(t)r.push(t[2]);else{var n=new Promise((function(r,n){t=o[e]=[r,n]}));r.push(t[2]=n);var u,c=document.createElement("script");c.charset="utf-8",c.timeout=120,a.nc&&c.setAttribute("nonce",a.nc),c.src=function(e){return a.p+"static/js/"+({}[e]||e)+"."+{0:"f4ca0312",4:"872acd80",5:"adc926c7",6:"b1526974",7:"81e6539b",8:"ea058cae",9:"081e9acb",10:"5c9df1fe",11:"dfb826c6"}[e]+".chunk.js"}(e);var i=new Error;u=function(r){c.onerror=c.onload=null,clearTimeout(f);var t=o[e];if(0!==t){if(t){var n=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;i.message="Loading chunk "+e+" failed.\n("+n+": "+u+")",i.name="ChunkLoadError",i.type=n,i.request=u,t[1](i)}o[e]=void 0}};var f=setTimeout((function(){u({type:"timeout",target:c})}),12e4);c.onerror=c.onload=u,document.head.appendChild(c)}return Promise.all(r)},a.m=e,a.c=n,a.d=function(e,r,t){a.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,r){if(1&r&&(e=a(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(a.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)a.d(t,n,function(r){return e[r]}.bind(null,n));return t},a.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(r,"a",r),r},a.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},a.p="/react-gh-pages/",a.oe=function(e){throw console.error(e),e};var c=this.webpackJsonpui=this.webpackJsonpui||[],i=c.push.bind(c);c.push=r,c=c.slice();for(var f=0;f<c.length;f++)r(c[f]);var l=i;t()}([])</script><script src="/react-gh-pages/static/js/3.0972b5bb.chunk.js"></script><script src="/react-gh-pages/static/js/main.d2e329ce.chunk.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mohand Alrasheed</title>
+        <style>
+            /* Base styles */
+            body {
+                font-family: "Courier New", monospace;
+                background-color: #ffffff;
+                color: #000000;
+                margin: 0;
+                padding: 20px;
+                line-height: 1.4;
+                font-size: 14px;
+                max-width: 800px;
+            }
+
+            /* Typography */
+            h2 {
+                font-size: 14px;
+                font-weight: normal;
+                margin: 0 0 20px 0;
+                letter-spacing: 1px;
+                color: #333;
+                text-transform: uppercase;
+            }
+
+            p {
+                margin: 0 0 20px 0;
+            }
+
+            .intro {
+                font-weight: normal;
+                letter-spacing: 0.5px;
+                color: #222;
+            }
+
+            a {
+                color: #0000ff;
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: border-bottom 0.2s ease;
+            }
+
+            a:hover {
+                border-bottom: 1px solid #0000ff;
+            }
+
+            /* Lists */
+            ul {
+                margin: 20px 0;
+                padding-left: 0;
+                list-style: none;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            .career-item {
+                margin-bottom: 3px;
+                font-size: 14px;
+                display: flex;
+                align-items: baseline;
+            }
+
+            .career-date {
+                display: inline-block;
+                width: 120px;
+                color: #666;
+                flex-shrink: 0;
+            }
+
+            .career-content {
+                flex: 1;
+            }
+
+            /* Projects section */
+            .projects {
+                margin-top: 30px;
+            }
+
+            .project {
+                margin-bottom: 3px;
+                font-size: 14px;
+                display: flex;
+                align-items: baseline;
+            }
+
+            .project-date {
+                display: inline-block;
+                width: 65px;
+                color: #666;
+                flex-shrink: 0;
+                font-size: 13px;
+            }
+
+            .project-content {
+                flex: 1;
+            }
+
+            .project-name {
+                margin-right: 10px;
+            }
+
+            .project-links {
+                font-size: 12px;
+            }
+
+            .project-links a {
+                margin-right: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <p class="intro">
+                Hi, I'm Mohand Alrasheed and this is my site. I'm a software
+                engineer based in Riyadh.
+            </p>
+            <p>
+                I love working on distributed systems, networking, graphics, and
+                everything related to computers. You can reach out to me via
+                <a href="https://linkedin.com/in/mohand-alrasheed">LinkedIn</a>
+                or
+                <a href="https://twitter.com/MohndAlrasheed" target="_blank"
+                    >Twitter</a
+                >, you can check my
+                <a href="https://github.com/Hawzen" target="_blank">GitHub</a>
+                too.
+            </p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Career</h2>
+                <div>
+                    <div class="career-item">
+                        <span class="career-date">2025–Present</span>
+                        <div class="career-content">
+                            <a
+                                href="https://www.wirefilter.com/"
+                                target="_blank"
+                                >WireFilter</a
+                            >
+                            – Software Engineer. Building Saudi's networking
+                            infrastructure 🚀.
+                        </div>
+                    </div>
+                    <div class="career-item">
+                        <span class="career-date">2022–2024</span>
+                        <div class="career-content">
+                            <a href="https://www.mozn.sa/" target="_blank"
+                                >Mozn</a
+                            >
+                            – Intern -> Engineer III.
+                            <a href="https://www.getfocal.ai/" target="_blank"
+                                >Combating financial fraud</a
+                            >.
+                        </div>
+                    </div>
+                    <div class="career-item">
+                        <span class="career-date">2018–2022</span>
+                        <div class="career-content">
+                            King Saud University – B.S. Computer Science (GPA
+                            4.87/5).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>Projects</h2>
+
+                <article class="project">
+                    <span class="project-date">2025</span>
+                    <div class="project-content">
+                        <span class="project-name">hdp</span>
+                        <span class="project-links">
+                            <a
+                                href="https://github.com/Hawzen/hdp"
+                                target="_blank"
+                                >read</a
+                            >
+                        </span>
+                        - "What would happen if we didn't use TCP or UDP?"
+                        networking experiment
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2025</span>
+                    <div class="project-content">
+                        <span class="project-name">Travel Tracker</span>
+                        <span class="project-links">
+                            <a
+                                href="https://hawzen.github.io/Travel-Tracker/"
+                                target="_blank"
+                                >demo</a
+                            >
+                            <a
+                                href="https://github.com/Hawzen/Travel-Tracker"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        - Small tool to track my travels
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2024</span>
+                    <div class="project-content">
+                        <span class="project-name">diary-viz</span>
+                        <span class="project-links">
+                            <a
+                                href="https://github.com/Hawzen/diary-viz"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        – Visualizing my diary entries
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2023</span>
+                    <div class="project-content">
+                        <span class="project-name">Gopher Crawler</span>
+                        <span class="project-links">
+                            <a
+                                href="https://github.com/Hawzen/Gopher-Crawler"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        – Web crawler in Go
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2022</span>
+                    <div class="project-content">
+                        <span class="project-name">Course Ranking</span>
+                        <span class="project-links">
+                            <a href="https://courses.hawzen.me/" target="_blank"
+                                >demo</a
+                            >
+                            <a
+                                href="https://github.com/Hawzen/Course-Ranking"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        – KSU CS curriculum analysis
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2022</span>
+                    <div class="project-content">
+                        <span class="project-name">Dialect Predictor</span>
+                        <span class="project-links">
+                            <a href="https://arabic.hawzen.me/" target="_blank"
+                                >demo</a
+                            >
+                            <a
+                                href="https://github.com/Hawzen/Dialect-Graduation-Project-Fullstack"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        – Arabic dialect ML predictor
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2021</span>
+                    <div class="project-content">
+                        <span class="project-name"
+                            >Python Data Analysis Tutorial</span
+                        >
+                        <span class="project-links">
+                            <a
+                                href="https://www.youtube.com/watch?v=Rw4qJQflxZY"
+                                target="_blank"
+                                >watch</a
+                            >
+                        </span>
+                        – Introductory data-analysis tutorial using Python
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2021</span>
+                    <div class="project-content">
+                        <span class="project-name">Calbot</span>
+                        <span class="project-links">
+                            <a href="https://calbot.hawzen.me/" target="_blank"
+                                >demo</a
+                            >
+                            <a
+                                href="https://github.com/d7miiZ/Arabic-Font-Detector"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        – Arabic font classifier
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2020</span>
+                    <div class="project-content">
+                        <span class="project-name">Whatboard</span>
+                        <span class="project-links">
+                            <a
+                                href="https://whatboard.hawzen.me"
+                                target="_blank"
+                                >demo</a
+                            >
+                            <a
+                                href="https://github.com/Hawzen/Whatboard"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        - WhatsApp chat analysis tool
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2020</span>
+                    <div class="project-content">
+                        <span class="project-name">Twitgraph</span>
+                        <span class="project-links">
+                            <a
+                                href="https://github.com/Hawzen/Twitgraph"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        - Twitter social network visualization
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-date">2020</span>
+                    <div class="project-content">
+                        <span class="project-name">Phonetics Puzzle</span>
+                        <span class="project-links">
+                            <a
+                                href="https://phonetics.hawzen.me/"
+                                target="_blank"
+                                >demo</a
+                            >
+                            <a
+                                href="https://github.com/Hawzen/Phonetics-Puzzle"
+                                target="_blank"
+                                >code</a
+                            >
+                        </span>
+                        - Function optimization puzzle
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <script>
+            // Hieroglyphics mapping
+            const hieroglyphicsMap = {
+                a: "𓄿",
+                b: "𓃀",
+                c: "𓍿",
+                d: "𓂧",
+                e: "𓇋",
+                f: "𓄑",
+                g: "𓎼",
+                h: "𓉔",
+                i: "𓇋",
+                j: "𓆓",
+                k: "𓎡",
+                l: "𓃭",
+                m: "𓅓",
+                n: "𓈖",
+                o: "𓅱",
+                p: "𓊪",
+                q: "𓈎",
+                r: "𓂋",
+                s: "𓊃",
+                t: "𓏏",
+                u: "𓅱",
+                v: "𓆑",
+                w: "𓅱",
+                x: "𓐍",
+                y: "𓇌",
+                z: "𓊃",
+                " ": " ",
+                ".": "𓊪",
+                ",": "𓂝",
+                "!": "𓈖",
+                "?": "𓍿",
+                A: "𓄿",
+                B: "𓃀",
+                C: "𓍿",
+                D: "𓂧",
+                E: "𓇋",
+                F: "𓄑",
+                G: "𓎼",
+                H: "𓉔",
+                I: "𓇋",
+                J: "𓆓",
+                K: "𓎡",
+                L: "𓃭",
+                M: "𓅓",
+                N: "𓈖",
+                O: "𓅱",
+                P: "𓊪",
+                Q: "𓈎",
+                R: "𓂋",
+                S: "𓊃",
+                T: "𓏏",
+                U: "𓅱",
+                V: "𓆑",
+                W: "𓅱",
+                X: "𓐍",
+                Y: "𓇌",
+                Z: "𓊃",
+            };
+
+            function convertToHieroglyphics(text) {
+                return text
+                    .split("")
+                    .map((char) => hieroglyphicsMap[char] || char)
+                    .join("");
+            }
+
+            function handleTextSelection() {
+                const selection = window.getSelection();
+                if (selection.toString().length > 0) {
+                    const range = selection.getRangeAt(0);
+                    const selectedText = selection.toString();
+                    const hieroglyphicsText =
+                        convertToHieroglyphics(selectedText);
+
+                    range.deleteContents();
+                    range.insertNode(
+                        document.createTextNode(hieroglyphicsText),
+                    );
+                    selection.removeAllRanges();
+                }
+            }
+
+            // Desktop support
+            document.addEventListener("mouseup", handleTextSelection);
+
+            // Mobile support
+            document.addEventListener("touchend", handleTextSelection);
+        </script>
+    </body>
+</html>
